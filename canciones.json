@@ -1,5 +1,32 @@
 [
-    { "titulo": "Pescador de Hombres" },
-    { "titulo": "La muerte no es el final" },
-    { "titulo": "Nada te turbe" }
+  {
+    "id": 1,
+    "titulo": "Pescador de Hombres",
+    "parte": "Comunión",
+    "tono": "Re",
+    "ritmo": "Balada",
+    "autor": "Cesáreo Gabaráin",
+    "acordes": "[D]Tú has venido a la [G]orilla...",
+    "letra": "AQUÍ VA LA LETRA COMPLETA QUE TÚ AÑADIRÁS"
+  },
+  {
+    "id": 2,
+    "titulo": "Nada te turbe",
+    "parte": "Meditación",
+    "tono": "Mi menor",
+    "ritmo": "Lento",
+    "autor": "Santa Teresa / Popular",
+    "acordes": "[Em]Nada te turbe...",
+    "letra": "AQUÍ VA LA LETRA COMPLETA QUE TÚ AÑADIRÁS"
+  },
+  {
+    "id": 3,
+    "titulo": "La muerte no es el final",
+    "parte": "Comunión",
+    "tono": "Sol",
+    "ritmo": "Himno",
+    "autor": "Cesáreo Gabaráin",
+    "acordes": "[G]Tú nos dijiste...",
+    "letra": "AQUÍ VA LA LETRA COMPLETA QUE TÚ AÑADIRÁS"
+  }
 ]
