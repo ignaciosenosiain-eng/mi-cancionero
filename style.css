@@ -1,3 +1,7 @@
+/* ---------------------------------------------------------
+   ESTILO GENERAL
+--------------------------------------------------------- */
+
 body {
     font-family: Arial, sans-serif;
     background: #f7f7f7;
@@ -6,21 +10,39 @@ body {
     color: #333;
 }
 
-/* Contenedor principal */
 .container {
     max-width: 800px;
     margin: auto;
     padding: 20px;
 }
 
-/* Título principal */
-h1 {
+/* ---------------------------------------------------------
+   TÍTULOS
+--------------------------------------------------------- */
+
+h1, h2 {
     text-align: center;
-    margin-bottom: 20px;
     color: #222;
+    margin-bottom: 20px;
 }
 
-/* Lista de canciones */
+/* ---------------------------------------------------------
+   BUSCADOR
+--------------------------------------------------------- */
+
+#buscador {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+/* ---------------------------------------------------------
+   LISTA DE CANCIONES
+--------------------------------------------------------- */
+
 #lista-canciones li {
     list-style: none;
     background: white;
@@ -34,19 +56,13 @@ h1 {
     text-decoration: none;
     font-size: 18px;
     color: #0077cc;
+    font-weight: bold;
 }
 
-/* Buscador */
-#buscador {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    margin-bottom: 20px;
-    font-size: 16px;
-}
+/* ---------------------------------------------------------
+   PÁGINA DE CANCIÓN
+--------------------------------------------------------- */
 
-/* Página de canción */
 .cancion-info {
     background: white;
     padding: 20px;
@@ -54,29 +70,61 @@ h1 {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.cancion-info h2 {
-    margin-top: 0;
-}
-
 .campo {
     margin-bottom: 10px;
     font-size: 16px;
 }
 
-.acordes {
-    background: #eef6ff;
-    padding: 15px;
-    border-radius: 8px;
-    white-space: pre-wrap;
+/* ---------------------------------------------------------
+   ACORDES SOBRE LA LETRA
+--------------------------------------------------------- */
+
+.acorde-linea {
     font-family: monospace;
-    margin-top: 20px;
+    color: #0077cc;
+    font-weight: bold;
+    margin: 0;
+    white-space: pre;
+    font-size: 17px;
 }
 
-.letra {
-    background: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    white-space: pre-wrap;
+.letra-linea {
+    font-family: monospace;
+    margin: 0 0 12px 0;
+    white-space: pre;
+    font-size: 17px;
+    line-height: 1.4;
+}
+
+/* ---------------------------------------------------------
+   BOTÓN VOLVER
+--------------------------------------------------------- */
+
+.boton-volver {
+    display: inline-block;
     margin-top: 20px;
-    line-height: 1.6;
+    padding: 10px 15px;
+    background: #0077cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.boton-volver:hover {
+    background: #005fa3;
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+--------------------------------------------------------- */
+
+@media (max-width: 600px) {
+    .acorde-linea, .letra-linea {
+        font-size: 16px;
+    }
+
+    #lista-canciones li a {
+        font-size: 16px;
+    }
 }
