@@ -13,7 +13,7 @@ function mostrarCanciones(lista) {
 
     lista.forEach(c => {
         const li = document.createElement("li");
-        li.textContent = c.titulo;
+        li.innerHTML = `<a href="cancion.html?id=${c.id}">${c.titulo}</a>`;
         ul.appendChild(li);
     });
 }
