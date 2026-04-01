@@ -28,16 +28,16 @@
     "autor": "Cesáreo Gabaráin",
     "acordes": "[G]Tú nos dijiste...",
     "letra": "AQUÍ VA LA LETRA COMPLETA QUE TÚ AÑADIRÁS"
-  }
+  },
   {
-  "id": 4,
-  "titulo": "Pueblo de Reyes",
-  "parte": "Entrada",
-  "tono": "La",
-  "ritmo": "Marcha",
-  "autor": "Desconocido / Tradicional",
-  "acordes": "[A]Pueblo de reyes, [E]asamblea santa, [F#m]pueblo sacerdotal, [D]pueblo de Dios, [E]bendice a tu Señor.",
-  "letra": "AQUÍ PUEDES AÑADIR LA LETRA COMPLETA MANUALMENTE"
-},
-  
+    "id": 4,
+    "titulo": "Pueblo de Reyes",
+    "parte": "Entrada",
+    "tono": "La",
+    "ritmo": "Marcha",
+    "autor": "Desconocido / Tradicional",
+    "acordes": "[A]Pueblo de reyes, [E]asamblea santa, [F#m]pueblo sacerdotal, [D]pueblo de Dios, [E]bendice a tu Señor.",
+    "letra": "AQUÍ PUEDES AÑADIR LA LETRA COMPLETA MANUALMENTE"
+  }
 ]
+
