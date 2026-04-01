@@ -1,19 +1,82 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
-}
-
-h1 {
+    background: #f7f7f7;
+    margin: 0;
+    padding: 0;
     color: #333;
 }
 
-#buscador {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
+/* Contenedor principal */
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
 }
 
+/* Título principal */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+/* Lista de canciones */
 #lista-canciones li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+    list-style: none;
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#lista-canciones li a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #0077cc;
+}
+
+/* Buscador */
+#buscador {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+/* Página de canción */
+.cancion-info {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.cancion-info h2 {
+    margin-top: 0;
+}
+
+.campo {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.acordes {
+    background: #eef6ff;
+    padding: 15px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    font-family: monospace;
+    margin-top: 20px;
+}
+
+.letra {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    margin-top: 20px;
+    line-height: 1.6;
 }
