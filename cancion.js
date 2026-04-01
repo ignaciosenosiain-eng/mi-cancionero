@@ -1,4 +1,4 @@
-// Obtener parámetros de la URL
+// Obtener ID de la canción desde la URL
 const urlParams = new URLSearchParams(window.location.search);
 const idCancion = parseInt(urlParams.get("id"));
 
@@ -46,7 +46,6 @@ function renderAcordesSobreLetra(texto) {
             return '';
         });
 
-        // Construir línea de acordes
         let lineaAcordes = '';
         let pos = 0;
 
@@ -65,3 +64,4 @@ function renderAcordesSobreLetra(texto) {
 
     return resultado;
 }
+
