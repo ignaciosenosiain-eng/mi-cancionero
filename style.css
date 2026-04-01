@@ -1,7 +1,3 @@
-/* ---------------------------------------------------------
-   ESTILO GENERAL
---------------------------------------------------------- */
-
 body {
     font-family: Arial, sans-serif;
     background: #f7f7f7;
@@ -16,19 +12,11 @@ body {
     padding: 20px;
 }
 
-/* ---------------------------------------------------------
-   TÍTULOS
---------------------------------------------------------- */
-
 h1, h2 {
     text-align: center;
     color: #222;
     margin-bottom: 20px;
 }
-
-/* ---------------------------------------------------------
-   BUSCADOR
---------------------------------------------------------- */
 
 #buscador {
     width: 100%;
@@ -38,10 +26,6 @@ h1, h2 {
     margin-bottom: 20px;
     font-size: 16px;
 }
-
-/* ---------------------------------------------------------
-   LISTA DE CANCIONES
---------------------------------------------------------- */
 
 #lista-canciones li {
     list-style: none;
@@ -58,26 +42,6 @@ h1, h2 {
     color: #0077cc;
     font-weight: bold;
 }
-
-/* ---------------------------------------------------------
-   PÁGINA DE CANCIÓN
---------------------------------------------------------- */
-
-.cancion-info {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.campo {
-    margin-bottom: 10px;
-    font-size: 16px;
-}
-
-/* ---------------------------------------------------------
-   ACORDES SOBRE LA LETRA
---------------------------------------------------------- */
 
 .acorde-linea {
     font-family: monospace;
@@ -96,13 +60,9 @@ h1, h2 {
     line-height: 1.4;
 }
 
-/* ---------------------------------------------------------
-   BOTÓN VOLVER
---------------------------------------------------------- */
-
 .boton-volver {
     display: inline-block;
-    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 10px 15px;
     background: #0077cc;
     color: white;
@@ -115,16 +75,8 @@ h1, h2 {
     background: #005fa3;
 }
 
-/* ---------------------------------------------------------
-   RESPONSIVE
---------------------------------------------------------- */
-
 @media (max-width: 600px) {
     .acorde-linea, .letra-linea {
-        font-size: 16px;
-    }
-
-    #lista-canciones li a {
         font-size: 16px;
     }
 }
