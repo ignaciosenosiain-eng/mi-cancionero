@@ -1,4 +1,57 @@
 /* ---------------------------------------------------------
+   ESTILOS GENERALES
+--------------------------------------------------------- */
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #eef1f5;
+    color: #222;
+}
+
+.contenedor {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* ---------------------------------------------------------
+   LISTA DE CANCIONES (PÁGINA PRINCIPAL)
+--------------------------------------------------------- */
+
+.lista-canciones {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-canciones li {
+    background: white;
+    margin-bottom: 15px;
+    padding: 18px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.lista-canciones li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+.lista-canciones a {
+    text-decoration: none;
+    color: #005bb5;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.lista-canciones a:hover {
+    text-decoration: underline;
+}
+
+/* ---------------------------------------------------------
    PÁGINA DE CANCIÓN
 --------------------------------------------------------- */
 
@@ -74,4 +127,5 @@
 .boton-volver:hover {
     background: #004a94;
 }
+
 
