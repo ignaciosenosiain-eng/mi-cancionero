@@ -1,82 +1,85 @@
+/* -----------------------------------------
+   ESTILOS GENERALES
+----------------------------------------- */
+
 body {
     font-family: Arial, sans-serif;
-    background: #f7f7f7;
-    margin: 0;
+    margin: 20px;
     padding: 0;
-    color: #333;
-}
-
-.container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-}
-
-h1, h2 {
-    text-align: center;
+    background: #f7f7f7;
     color: #222;
+}
+
+h1 {
+    text-align: center;
     margin-bottom: 20px;
 }
 
-#buscador {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+/* Contenedor principal */
+#contenedor-cancion {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* -----------------------------------------
+   DATOS DE LA CANCIÓN
+----------------------------------------- */
+
+.info-cancion {
     margin-bottom: 20px;
     font-size: 16px;
 }
 
-#lista-canciones li {
-    list-style: none;
-    background: white;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-#lista-canciones li a {
-    text-decoration: none;
-    font-size: 18px;
-    color: #0077cc;
+.info-cancion span {
     font-weight: bold;
 }
 
+/* -----------------------------------------
+   LETRA Y ACORDES
+----------------------------------------- */
+
+/* Línea de acordes alineados */
 .acorde-linea {
     font-family: monospace;
-    color: #0077cc;
     font-weight: bold;
+    color: #0077cc;
     margin: 0;
     white-space: pre;
-    font-size: 17px;
 }
 
+/* Línea de letra */
 .letra-linea {
     font-family: monospace;
     margin: 0 0 12px 0;
     white-space: pre;
-    font-size: 17px;
-    line-height: 1.4;
+    line-height: 1.4em;
 }
+
+/* Para la letra completa cuando no hay acordes */
+#letra pre {
+    font-family: monospace;
+    white-space: pre-wrap;
+    margin-bottom: 12px;
+}
+
+/* -----------------------------------------
+   BOTÓN VOLVER (si lo usas)
+----------------------------------------- */
 
 .boton-volver {
     display: inline-block;
-    margin-bottom: 20px;
+    margin-top: 20px;
     padding: 10px 15px;
     background: #0077cc;
     color: white;
     text-decoration: none;
-    border-radius: 8px;
-    font-size: 16px;
+    border-radius: 5px;
 }
 
 .boton-volver:hover {
     background: #005fa3;
-}
-
-@media (max-width: 600px) {
-    .acorde-linea, .letra-linea {
-        font-size: 16px;
-    }
 }
