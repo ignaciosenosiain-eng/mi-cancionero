@@ -17,15 +17,8 @@ fetch('canciones2.json?nocache=' + Date.now(), { cache: 'no-store' })
 
             const letraDiv = document.getElementById("letra");
 
-            // Si hay acordes, los mostramos alineados
-            if (cancion.acordes && cancion.acordes.trim() !== "") {
-                letraDiv.innerHTML = renderAcordesSobreLetra(cancion.acordes);
-            }
-
-            // Si además hay letra, la añadimos debajo
-            if (cancion.letra && cancion.letra.trim() !== "") {
-                letraDiv.innerHTML += `<pre class="letra-linea">${cancion.letra}</pre>`;
-            }
+            // Procesar formato de 2 líneas: acordes arriba, letra abajo
+            letraDiv.innerHTML = renderDosLineas(cancion.acordes, cancion.letra);
 
         } else {
             document.getElementById("letra").innerText =
@@ -36,43 +29,23 @@ fetch('canciones2.json?nocache=' + Date.now(), { cache: 'no-store' })
 
 
 // -----------------------------------------------------------
-// FUNCIÓN PARA MOSTRAR ACORDES ENCIMA DE LA LETRA (ALINEADOS)
+// FUNCIÓN PARA FORMATO DE 2 LÍNEAS (ACORDES + LETRA)
 // -----------------------------------------------------------
-function renderAcordesSobreLetra(texto) {
-    const lineas = texto.split('\n');
+function renderDosLineas(acordesTexto, letraTexto) {
+    const acordesLineas = acordesTexto.split('\n');
+    const letraLineas = letraTexto.split('\n');
+
     let resultado = '';
 
-    lineas.forEach(linea => {
-        const acordes = [];
+    for (let i = 0; i < letraLineas.length; i++) {
+        const acordes = acordesLineas[i] || '';
+        const letra = letraLineas[i] || '';
 
-        // REGEX CORREGIDO
-        let letraLimpia = linea.replace(/
-
-\[([^\]
-
-]+)\]
-
-/g, (match, acorde, offset) => {
-            acordes.push({ acorde, offset });
-            return '';
-        });
-
-        // Construir la línea de acordes
-        let lineaAcordes = '';
-        let pos = 0;
-
-        acordes.forEach(a => {
-            while (pos < a.offset) {
-                lineaAcordes += ' ';
-                pos++;
-            }
-            lineaAcordes += a.acorde;
-            pos += a.acorde.length;
-        });
-
-        resultado += `<pre class="acorde-linea">${lineaAcordes}</pre>`;
-        resultado += `<pre class="letra-linea">${letraLimpia}</pre>`;
-    });
+        resultado += `
+            <pre class="acorde-linea">${acordes}</pre>
+            <pre class="letra-linea">${letra}</pre>
+        `;
+    }
 
     return resultado;
 }
