@@ -17,23 +17,14 @@ fetch('canciones2.json?nocache=' + Date.now(), { cache: 'no-store' })
 
             const letraDiv = document.getElementById("letra");
 
-            // 1) Si hay acordes y letra → mostrar ambos
-            if (cancion.acordes && cancion.letra) {
-                letraDiv.innerHTML =
-                    `<pre>${cancion.acordes}</pre><br>` +
-                    `<pre>${cancion.letra}</pre>`;
+            // Si hay acordes, los mostramos alineados
+            if (cancion.acordes && cancion.acordes.trim() !== "") {
+                letraDiv.innerHTML = renderAcordesSobreLetra(cancion.acordes);
             }
-            // 2) Si solo hay acordes
-            else if (cancion.acordes) {
-                letraDiv.innerHTML = `<pre>${cancion.acordes}</pre>`;
-            }
-            // 3) Si solo hay letra
-            else if (cancion.letra) {
-                letraDiv.innerHTML = `<pre>${cancion.letra}</pre>`;
-            }
-            // 4) Si no hay nada
-            else {
-                letraDiv.innerText = "No hay letra disponible.";
+
+            // Si además hay letra, la añadimos debajo
+            if (cancion.letra && cancion.letra.trim() !== "") {
+                letraDiv.innerHTML += `<pre class="letra-linea">${cancion.letra}</pre>`;
             }
 
         } else {
@@ -42,3 +33,47 @@ fetch('canciones2.json?nocache=' + Date.now(), { cache: 'no-store' })
         }
     })
     .catch(error => console.error("Error cargando JSON:", error));
+
+
+// -----------------------------------------------------------
+// FUNCIÓN PARA MOSTRAR ACORDES ENCIMA DE LA LETRA (ALINEADOS)
+// -----------------------------------------------------------
+function renderAcordesSobreLetra(texto) {
+    const lineas = texto.split('\n');
+    let resultado = '';
+
+    lineas.forEach(linea => {
+        const acordes = [];
+
+        // REGEX CORREGIDO
+        let letraLimpia = linea.replace(/
+
+\[([^\]
+
+]+)\]
+
+/g, (match, acorde, offset) => {
+            acordes.push({ acorde, offset });
+            return '';
+        });
+
+        // Construir la línea de acordes
+        let lineaAcordes = '';
+        let pos = 0;
+
+        acordes.forEach(a => {
+            while (pos < a.offset) {
+                lineaAcordes += ' ';
+                pos++;
+            }
+            lineaAcordes += a.acorde;
+            pos += a.acorde.length;
+        });
+
+        resultado += `<pre class="acorde-linea">${lineaAcordes}</pre>`;
+        resultado += `<pre class="letra-linea">${letraLimpia}</pre>`;
+    });
+
+    return resultado;
+}
+
