@@ -1,5 +1,5 @@
 // Cargar canciones desde el JSON
-fetch("canciones.json")
+fetch("canciones2.json")
     .then(res => res.json())
     .then(data => {
         window.canciones = data;
