@@ -1,53 +1,77 @@
 /* ---------------------------------------------------------
-   ESTILOS GENERALES
+   PÁGINA DE CANCIÓN
 --------------------------------------------------------- */
 
-body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #eef1f5;
-    color: #222;
+#contenedor-cancion {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    max-width: 800px;
+    margin: 40px auto;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
-.contenedor {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
+#titulo {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* Información de la canción */
+.info-cancion {
+    font-size: 17px;
+    margin-bottom: 25px;
+    background: #f3f6fa;
+    padding: 12px 15px;
+    border-radius: 8px;
+}
+
+.info-cancion span {
+    font-weight: bold;
+    color: #005bb5;
 }
 
 /* ---------------------------------------------------------
-   LISTA DE CANCIONES (PÁGINA PRINCIPAL)
+   LETRA Y ACORDES (FORMATO 2 LÍNEAS)
 --------------------------------------------------------- */
 
-.lista-canciones {
-    list-style: none;
-    padding: 0;
+.acorde-linea {
+    font-family: monospace;
+    font-weight: bold;
+    color: #0077cc;
     margin: 0;
+    white-space: pre;
+    font-size: 18px;
 }
 
-.lista-canciones li {
-    background: white;
-    margin-bottom: 15px;
-    padding: 18px 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+.letra-linea {
+    font-family: monospace;
+    margin: 0 0 18px 0;
+    white-space: pre;
+    line-height: 1.5em;
+    font-size: 18px;
 }
 
-.lista-canciones li:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-}
+/* ---------------------------------------------------------
+   BOTÓN VOLVER
+--------------------------------------------------------- */
 
-.lista-canciones a {
+.boton-volver {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 18px;
+    background: #005bb5;
+    color: white;
     text-decoration: none;
-    color: #005bb5;
-    font-size: 20px;
-    font-weight: 600;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background 0.15s ease;
 }
 
-.lista-canciones a:hover {
-    text-decoration: underline;
+.boton-volver:hover {
+    background: #004a94;
 }
 
