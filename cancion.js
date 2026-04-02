@@ -15,12 +15,25 @@ fetch('canciones.json?nocache=' + Date.now(), { cache: 'no-store' })
             document.getElementById("ritmo").innerText = cancion.ritmo;
             document.getElementById("autor").innerText = cancion.autor;
 
-            // Mostrar acordes si existen, si no mostrar letra normal
-            if (cancion.acordes && cancion.acordes.trim() !== "") {
-                document.getElementById("letra").innerHTML =
-                    renderAcordesSobreLetra(cancion.acordes);
-            } else {
-                document.getElementById("letra").innerText = cancion.letra;
+            const letraDiv = document.getElementById("letra");
+
+            // 1) Si hay acordes y letra → mostrar ambos
+            if (cancion.acordes && cancion.letra) {
+                letraDiv.innerHTML =
+                    `<pre>${cancion.acordes}</pre><br>` +
+                    `<pre>${cancion.letra}</pre>`;
+            }
+            // 2) Si solo hay acordes
+            else if (cancion.acordes) {
+                letraDiv.innerHTML = `<pre>${cancion.acordes}</pre>`;
+            }
+            // 3) Si solo hay letra
+            else if (cancion.letra) {
+                letraDiv.innerHTML = `<pre>${cancion.letra}</pre>`;
+            }
+            // 4) Si no hay nada
+            else {
+                letraDiv.innerText = "No hay letra disponible.";
             }
 
         } else {
@@ -29,4 +42,3 @@ fetch('canciones.json?nocache=' + Date.now(), { cache: 'no-store' })
         }
     })
     .catch(error => console.error("Error cargando JSON:", error));
-
