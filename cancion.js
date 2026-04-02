@@ -3,7 +3,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const idCancion = parseInt(urlParams.get("id"));
 
 // Cargar JSON sin caché
-fetch('canciones.json?nocache=' + Date.now(), { cache: 'no-store' })
+fetch('canciones2.json?nocache=' + Date.now(), { cache: 'no-store' })
     .then(response => response.json())
     .then(data => {
         const cancion = data.find(c => c.id === idCancion);
