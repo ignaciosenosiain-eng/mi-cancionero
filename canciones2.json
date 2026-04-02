@@ -38,5 +38,18 @@
     "autor": "Desconocido / Tradicional",
     "acordes": "[A]Pueblo de reyes, [E]asamblea santa, [F#m]pueblo sacerdotal, [D]pueblo de Dios, [E]bendice a tu Señor.\n[A]Cristo te ha hecho [E]nación escogida, [F#m]realeza santa, [D]pueblo de Dios, [E]bendice a tu Señor.\n\n[A]Te cantamos, oh [E]Cristo, [F#m]Hijo de [D]Dios,\n[A]te alabamos, oh [E]Cristo, [F#m]Hijo de [D]Dios,\n[A]tú nos has hecho [E]pueblo de reyes, [F#m]asamblea santa, [D]pueblo sacerdotal, [E]pueblo de Dios.",
     "letra": "Pueblo de reyes,\nasamblea santa,\npueblo sacerdotal,\npueblo de Dios,\nbendice a tu Señor.\nCristo te ha hecho\nnación escogida,\nrealeza santa,\npueblo de Dios,\nbendice a tu Señor.\n\nTe cantamos, oh Cristo,\nHijo de Dios,\nte alabamos, oh Cristo,\nHijo de Dios,\ntú nos has hecho\npueblo de reyes,\nasamblea santa,\npueblo sacerdotal,\npueblo de Dios."
-  }
+  },
+ {
+  "id": 5,
+  "titulo": "Alaba al Señor",
+  "parte": "Entrada",
+  "tono": "Do",
+  "ritmo": "Marcha",
+  "autor": "Dominio público",
+
+  "acordes": "DO                lam\nFA      rem      SOL\nmim            lam      FA\nDO          SOL\nlam              DO\nFA      rem      SOL\nmim            lam      FA\nDO      SOL      DO",
+
+  "letra": "Alaba al Señor alma mía,\nglorifica su nombre también,\nporque la gloria del Señor es mía por siempre,\nJesús es el mismo de ayer.\nEl Señor me libró, mi vida cambió,\ntodo el mundo lo verá,\nporque el vino que me dio alegró mi corazón\ny con su aceite mi cara brilló."
+}
+
 ]
