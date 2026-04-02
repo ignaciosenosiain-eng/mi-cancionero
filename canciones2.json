@@ -1,46 +1,6 @@
 [
-  {
-    "id": 1,
-    "titulo": "Pescador de Hombres",
-    "parte": "Comunión",
-    "tono": "Re",
-    "ritmo": "Balada",
-    "autor": "Cesáreo Gabaráin",
-    "acordes": "[D]Tú has venido a la [G]orilla...",
-    "letra": "AQUÍ VA LA LETRA COMPLETA QUE TÚ AÑADIRÁS"
-  },
-  {
-    "id": 2,
-    "titulo": "Nada te turbe",
-    "parte": "Meditación",
-    "tono": "Mi menor",
-    "ritmo": "Lento",
-    "autor": "Santa Teresa / Popular",
-    "acordes": "[Em]Nada te turbe...",
-    "letra": "AQUÍ VA LA LETRA COMPLETA QUE TÚ AÑADIRÁS"
-  },
-  {
-    "id": 3,
-    "titulo": "La muerte no es el final",
-    "parte": "Comunión",
-    "tono": "Sol",
-    "ritmo": "Himno",
-    "autor": "Cesáreo Gabaráin",
-    "acordes": "[G]Tú nos dijiste...",
-    "letra": "AQUÍ VA LA LETRA COMPLETA QUE TÚ AÑADIRÁS"
-  },
-  {
-    "id": 4,
-    "titulo": "Pueblo de Reyes",
-    "parte": "Entrada",
-    "tono": "La",
-    "ritmo": "Marcha",
-    "autor": "Desconocido / Tradicional",
-    "acordes": "[A]Pueblo de reyes, [E]asamblea santa, [F#m]pueblo sacerdotal, [D]pueblo de Dios, [E]bendice a tu Señor.\n[A]Cristo te ha hecho [E]nación escogida, [F#m]realeza santa, [D]pueblo de Dios, [E]bendice a tu Señor.\n\n[A]Te cantamos, oh [E]Cristo, [F#m]Hijo de [D]Dios,\n[A]te alabamos, oh [E]Cristo, [F#m]Hijo de [D]Dios,\n[A]tú nos has hecho [E]pueblo de reyes, [F#m]asamblea santa, [D]pueblo sacerdotal, [E]pueblo de Dios.",
-    "letra": "Pueblo de reyes,\nasamblea santa,\npueblo sacerdotal,\npueblo de Dios,\nbendice a tu Señor.\nCristo te ha hecho\nnación escogida,\nrealeza santa,\npueblo de Dios,\nbendice a tu Señor.\n\nTe cantamos, oh Cristo,\nHijo de Dios,\nte alabamos, oh Cristo,\nHijo de Dios,\ntú nos has hecho\npueblo de reyes,\nasamblea santa,\npueblo sacerdotal,\npueblo de Dios."
-  },
  {
-  "id": 5,
+  "id": 1,
   "titulo": "Alaba al Señor",
   "parte": "Entrada",
   "tono": "Do",
