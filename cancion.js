@@ -1,52 +1,38 @@
-// Obtener ID de la canción desde la URL
-const urlParams = new URLSearchParams(window.location.search);
-const idCancion = parseInt(urlParams.get("id"));
+async function cargarCancion() {
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get("id"), 10);
 
-// Cargar JSON sin caché
-fetch('canciones2.json?nocache=' + Date.now(), { cache: 'no-store' })
-    .then(response => response.json())
-    .then(data => {
-        const cancion = data.find(c => c.id === idCancion);
+  const res = await fetch("cancionero.json");
+  const canciones = await res.json();
+  const cancion = canciones[id];
 
-        if (cancion) {
-            document.getElementById("titulo").innerText = cancion.titulo;
-            document.getElementById("parte").innerText = cancion.parte;
-            document.getElementById("tono").innerText = cancion.tono;
-            document.getElementById("ritmo").innerText = cancion.ritmo;
-            document.getElementById("autor").innerText = cancion.autor;
+  document.getElementById("titulo").textContent = cancion.title;
 
-            const letraDiv = document.getElementById("letra");
+  const contenedor = document.getElementById("contenido");
 
-            // Procesar formato de 2 líneas: acordes arriba, letra abajo
-            letraDiv.innerHTML = renderDosLineas(cancion.acordes, cancion.letra);
+  cancion.lines.forEach(line => {
+    const divLinea = document.createElement("div");
+    divLinea.className = "line";
 
-        } else {
-            document.getElementById("letra").innerText =
-                "Canción no encontrada.";
-        }
-    })
-    .catch(error => console.error("Error cargando JSON:", error));
+    line.syllables.forEach(s => {
+      const syl = document.createElement("div");
+      syl.className = "syllable";
 
+      const chord = document.createElement("div");
+      chord.className = "chord";
+      chord.textContent = s.chord || "";
 
-// -----------------------------------------------------------
-// FUNCIÓN PARA FORMATO DE 2 LÍNEAS (ACORDES + LETRA)
-// -----------------------------------------------------------
-function renderDosLineas(acordesTexto, letraTexto) {
-    const acordesLineas = acordesTexto.split('\n');
-    const letraLineas = letraTexto.split('\n');
+      const text = document.createElement("div");
+      text.className = "text";
+      text.textContent = s.text;
 
-    let resultado = '';
+      syl.appendChild(chord);
+      syl.appendChild(text);
+      divLinea.appendChild(syl);
+    });
 
-    for (let i = 0; i < letraLineas.length; i++) {
-        const acordes = acordesLineas[i] || '';
-        const letra = letraLineas[i] || '';
-
-        resultado += `
-            <pre class="acorde-linea">${acordes}</pre>
-            <pre class="letra-linea">${letra}</pre>
-        `;
-    }
-
-    return resultado;
+    contenedor.appendChild(divLinea);
+  });
 }
 
+cargarCancion();
