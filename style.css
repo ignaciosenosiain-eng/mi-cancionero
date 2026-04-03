@@ -127,5 +127,45 @@ body {
 .boton-volver:hover {
     background: #004a94;
 }
+/* ... tus estilos actuales ... */
+
+/* === Estilos para acordes encima de sílabas === */
+
+.line {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.syllable {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 8px;
+  margin-bottom: 4px;
+}
+
+.chord {
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1rem;
+  min-height: 1rem;
+  color: #c0392b;
+}
+
+.text {
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #111;
+    color: #eee;
+  }
+  .chord {
+    color: #ffcc66;
+  }
+}
 
 
