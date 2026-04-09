@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista del día</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <a href="index.html">← Volver</a>
+
+    <h1>Lista del día</h1>
+
+    <p>Puedes arrastrar las canciones para reordenarlas.</p>
+
+    <div id="listaCancionesDia"></div>
+
+    <hr>
+
+    <button id="generarPDF">Generar PDF</button>
+    <button id="vaciarLista">Vaciar lista del día</button>
+
+    <!-- Contenedor oculto para el PDF PRO -->
+    <div id="pdfContent" style="display:none;"></div>
+
+    <!-- Librería html2pdf.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script src="lista.js"></script>
+</body>
+</html>

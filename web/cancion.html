@@ -3,26 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canción</title>
-
-    <!-- Tu CSS -->
+    <title>Mi Cancionero</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <div id="contenedor-cancion" class="contenedor">
+    <a href="index.html">Volver</a>
 
-        <h1 id="titulo"></h1>
+    <h1 id="tituloCancion">Título</h1>
 
-        <!-- Aquí se insertan las líneas con sílabas y acordes -->
-        <div id="contenido"></div>
+    <p>
+        <strong>Categoría:</strong> <span id="categoriaCancion"></span><br>
+        <strong>Ritmo:</strong> <span id="ritmoCancion"></span><br>
+        <strong>Cejilla:</strong> <span id="cejillaCancion"></span><br>
+        <strong>Tonalidad original:</strong>
+        <span id="tonalidadOriginal"></span>
+        <button id="btnMenos">-1</button>
+        <button id="btnMas">+1</button><br>
+        <strong>Tonalidad actual:</strong> <span id="tonalidadActual"></span>
+    </p>
 
-        <a href="index.html" class="boton-volver">← Volver al listado</a>
-    </div>
+    <button id="btnListaDia">Añadir a la lista del día</button>
 
-    <!-- Tu JS -->
+    <hr>
+
+    <!-- Aquí van acordes + letra -->
+    <pre id="contenidoCancion" class="cancion-texto"></pre>
+
     <script src="cancion.js"></script>
-
 </body>
 </html>
