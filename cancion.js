@@ -83,7 +83,6 @@ function acordeEStoEN(acorde) {
 // ===============================
 function acordeENtoES(acorde) {
     acorde = acorde.replace("M", "m"); // normalizar
-
     if (mapaENtoES[acorde]) return mapaENtoES[acorde];
     return acorde;
 }
@@ -127,7 +126,8 @@ function mostrarDatos(cancion) {
     document.getElementById('categoriaCancion').textContent = categoria;
     document.getElementById('ritmoCancion').textContent = ritmo;
     document.getElementById('cejillaCancion').textContent = cejilla;
-    document.getElementById('tonalidadOriginal').textContent = original;
+
+    document.getElementById('tonoOriginalTexto').textContent = original;
     document.getElementById('tonalidadActual').textContent = original;
 }
 
@@ -207,7 +207,6 @@ function configurarListaDia(file, cancion) {
 // ===============================
 function configurarTransposicion(cancion) {
     const spanActual = document.getElementById('tonalidadActual');
-    const spanOriginal = document.getElementById('tonalidadOriginal');
     const original = cancion.originalKey || inferirTonalidad(cancion) || "—";
 
     let semitonos = 0;
@@ -224,23 +223,23 @@ function configurarTransposicion(cancion) {
         transponerCancion(cancion, semitonos);
     }
 
-    // Botón de bajar tono
     document.getElementById('btnMenos').addEventListener('click', () => {
         semitonos -= 1;
         actualizar();
     });
 
-    // Botón de subir tono
     document.getElementById('btnMas').addEventListener('click', () => {
         semitonos += 1;
         actualizar();
     });
 
-    // Hacer clic en la tonalidad original → reset
-    spanOriginal.style.cursor = "pointer";
-    spanOriginal.title = "Volver a la tonalidad original";
+    // Reset al pulsar icono o texto
+    document.getElementById('resetIcono').addEventListener('click', () => {
+        semitonos = 0;
+        actualizar();
+    });
 
-    spanOriginal.addEventListener('click', () => {
+    document.getElementById('tonoOriginalTexto').addEventListener('click', () => {
         semitonos = 0;
         actualizar();
     });
