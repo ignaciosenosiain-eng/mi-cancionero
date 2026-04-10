@@ -29,7 +29,7 @@ const mapaENtoES = {
 };
 
 // ===============================
-// INFERIR TONALIDAD A PARTIR DE ACORDES
+// INFERIR TONALIDAD
 // ===============================
 function inferirTonalidad(cancion) {
     const lineas = cancion.lines || [];
@@ -69,6 +69,9 @@ function acordeEStoEN(acorde) {
 // CONVERTIR ACORDE EN → ES
 // ===============================
 function acordeENtoES(acorde) {
+    // Normalizar m/M
+    acorde = acorde.replace("M", "m");
+
     if (mapaENtoES[acorde]) return mapaENtoES[acorde];
     return acorde;
 }
@@ -77,10 +80,12 @@ function acordeENtoES(acorde) {
 // TRANSPONER ACORDE (EN)
 // ===============================
 function transponerAcordeEN(acorde, semitonos) {
-    const match = acorde.match(/^([A-G][#]?)(m?)$/);
+    const match = acorde.match(/^([A-G][#]?)(m?)$/i);
     if (!match) return acorde;
 
     let [_, nota, menor] = match;
+    nota = nota.toUpperCase();
+
     let idx = notasEN.indexOf(nota);
     if (idx === -1) return acorde;
 
@@ -98,7 +103,7 @@ function transponerAcordeES(acorde, semitonos) {
 }
 
 // ===============================
-// MOSTRAR DATOS BÁSICOS
+// MOSTRAR DATOS
 // ===============================
 function mostrarDatos(cancion) {
     const categoria = cancion.category || "—";
@@ -115,7 +120,7 @@ function mostrarDatos(cancion) {
 }
 
 // ===============================
-// MOSTRAR CONTENIDO ORIGINAL
+// MOSTRAR CONTENIDO
 // ===============================
 function mostrarContenido(cancion) {
     const contenedor = document.getElementById('contenidoCancion');
@@ -130,7 +135,7 @@ function mostrarContenido(cancion) {
 }
 
 // ===============================
-// TRANSPONER TODA LA CANCIÓN
+// TRANSPONER CANCIÓN
 // ===============================
 function transponerCancion(cancion, semitonos) {
     const contenedor = document.getElementById('contenidoCancion');
@@ -150,7 +155,7 @@ function transponerCancion(cancion, semitonos) {
 }
 
 // ===============================
-// AÑADIR A LA LISTA DEL DÍA
+// LISTA DEL DÍA
 // ===============================
 function configurarListaDia(file, cancion) {
     const btn = document.getElementById('btnListaDia');
