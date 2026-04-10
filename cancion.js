@@ -207,6 +207,7 @@ function configurarListaDia(file, cancion) {
 // ===============================
 function configurarTransposicion(cancion) {
     const spanActual = document.getElementById('tonalidadActual');
+    const spanOriginal = document.getElementById('tonalidadOriginal');
     const original = cancion.originalKey || inferirTonalidad(cancion) || "—";
 
     let semitonos = 0;
@@ -223,13 +224,24 @@ function configurarTransposicion(cancion) {
         transponerCancion(cancion, semitonos);
     }
 
+    // Botón de bajar tono
     document.getElementById('btnMenos').addEventListener('click', () => {
         semitonos -= 1;
         actualizar();
     });
 
+    // Botón de subir tono
     document.getElementById('btnMas').addEventListener('click', () => {
         semitonos += 1;
+        actualizar();
+    });
+
+    // Hacer clic en la tonalidad original → reset
+    spanOriginal.style.cursor = "pointer";
+    spanOriginal.title = "Volver a la tonalidad original";
+
+    spanOriginal.addEventListener('click', () => {
+        semitonos = 0;
         actualizar();
     });
 
