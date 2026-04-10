@@ -213,7 +213,13 @@ function configurarTransposicion(cancion) {
 
     function actualizar() {
         const tonoReal = calcularTonalidadReal(original, semitonos);
-        spanActual.textContent = tonoReal;
+
+        const desplazamiento = semitonos === 0
+            ? ""
+            : ` (${semitonos > 0 ? "+" : ""}${semitonos})`;
+
+        spanActual.textContent = tonoReal + desplazamiento;
+
         transponerCancion(cancion, semitonos);
     }
 
