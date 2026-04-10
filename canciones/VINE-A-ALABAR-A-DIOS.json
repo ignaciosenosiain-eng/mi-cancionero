@@ -1,0 +1,41 @@
+{
+    "title": "Vine a alabar a Dios",
+    "category": "Entrada",
+    "ritmo": "4/4",
+    "cejilla": 2,
+    "originalKey": "SOL",
+    "lines": [
+        {
+            "chordLine": "SOL    RE    mim",
+            "lyrics": "Vine a alabar a Dios."
+        },
+        {
+            "chordLine": "DO     lam   RE",
+            "lyrics": "Vine a alabar a Dios."
+        },
+        {
+            "chordLine": "SOL    RE    mim",
+            "lyrics": "Vine a alabar su nombre."
+        },
+        {
+            "chordLine": "DO     RE    SOL7",
+            "lyrics": "Vine a alabar a Dios."
+        },
+        {
+            "chordLine": "DO     RE    SOL    mim",
+            "lyrics": "Él vino a mi vida en un día muy especial,"
+        },
+        {
+            "chordLine": "DO     RE    SOL    SOL7",
+            "lyrics": "cambió mi corazón por un nuevo corazón,"
+        },
+        {
+            "chordLine": "DO     RE    SOL    mim",
+            "lyrics": "y esta es la razón por la que digo que:"
+        },
+        {
+            "chordLine": "DO     RE    SOL    RE",
+            "lyrics": "Vine a alabar a Dios."
+        }
+    ]
+}
