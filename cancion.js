@@ -16,14 +16,16 @@ const mapaEStoEN = {
     "DO":"C","DO#":"C#","RE":"D","RE#":"D#","MI":"E","FA":"F","FA#":"F#",
     "SOL":"G","SOL#":"G#","LA":"A","LA#":"A#","SI":"B",
 
-    "LAM":"Am","REM":"Dm","MIM":"Em","FAM":"Fm","SOLM":"Gm","SIM":"Bm"
+    "LAM":"Am","REM":"Dm","MIM":"Em","FAM":"Fm","SOLM":"Gm","SIM":"Bm",
+    "FA#M":"F#m","DO#M":"C#m","SOL#M":"G#m","LA#M":"A#m","RE#M":"D#m"
 };
 
 const mapaENtoES = {
     "C":"DO","C#":"DO#","D":"RE","D#":"RE#","E":"MI","F":"FA","F#":"FA#",
     "G":"SOL","G#":"SOL#","A":"LA","A#":"LA#","B":"SI",
 
-    "Am":"lam","Dm":"rem","Em":"mim","Fm":"fam","Gm":"solm","Bm":"sim"
+    "Am":"lam","Dm":"rem","Em":"mim","Fm":"fam","Gm":"solm","Bm":"sim",
+    "F#m":"fa#m","C#m":"do#m","G#m":"sol#m","A#m":"la#m","D#m":"re#m"
 };
 
 // ===============================
