@@ -15,12 +15,14 @@ const notasEN = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
 const mapaEStoEN = {
     "DO":"C","DO#":"C#","RE":"D","RE#":"D#","MI":"E","FA":"F","FA#":"F#",
     "SOL":"G","SOL#":"G#","LA":"A","LA#":"A#","SI":"B",
-    "lam":"Am","rem":"Dm","mim":"Em","fam":"Fm","solm":"Gm","lam":"Am","sim":"Bm"
+
+    "LAM":"Am","REM":"Dm","MIM":"Em","FAM":"Fm","SOLM":"Gm","SIM":"Bm"
 };
 
 const mapaENtoES = {
     "C":"DO","C#":"DO#","D":"RE","D#":"RE#","E":"MI","F":"FA","F#":"FA#",
     "G":"SOL","G#":"SOL#","A":"LA","A#":"LA#","B":"SI",
+
     "Am":"lam","Dm":"rem","Em":"mim","Fm":"fam","Gm":"solm","Bm":"sim"
 };
 
@@ -29,7 +31,7 @@ const mapaENtoES = {
 // ===============================
 function inferirTonalidad(cancion) {
     const lineas = cancion.lines || [];
-    const regex = /\b(DO#|DO|RE#|RE|MI|FA#|FA|SOL#|SOL|LA#|LA|SI)(m?)\b/i;
+    const regex = /\b((DO|RE|MI|FA|SOL|LA|SI)(#)?(m)?)\b/i;
 
     for (const linea of lineas) {
         if (!linea.chordLine) continue;
@@ -37,16 +39,17 @@ function inferirTonalidad(cancion) {
         if (!m) continue;
 
         let nota = m[1].toUpperCase();
-        let menor = m[2] === "m";
+        let menor = nota.endsWith("M");
 
         if (menor) {
+            const base = nota.replace("M","");
             const relativas = {
                 "LA":"DO","RE":"FA","MI":"SOL","SI":"RE","FA#":"LA","DO#":"MI"
             };
-            return relativas[nota] || nota;
+            return relativas[base] || base;
         }
 
-        return nota;
+        return nota.replace("M","");
     }
     return "";
 }
@@ -55,8 +58,8 @@ function inferirTonalidad(cancion) {
 // CONVERTIR ACORDE ES → EN
 // ===============================
 function acordeEStoEN(acorde) {
-    const base = acorde.toUpperCase();
-    if (mapaEStoEN[base]) return mapaEStoEN[base];
+    const up = acorde.toUpperCase();
+    if (mapaEStoEN[up]) return mapaEStoEN[up];
     return acorde;
 }
 
@@ -131,7 +134,7 @@ function transponerCancion(cancion, semitonos) {
     const contenedor = document.getElementById('contenidoCancion');
     let salida = "";
 
-    const regex = /\b(DO#|DO|RE#|RE|MI|FA#|FA|SOL#|SOL|LA#|LA|SI|lam|rem|mim|fam|solm|sim)\b/gi;
+    const regex = /\b((DO|RE|MI|FA|SOL|LA|SI)(#)?(m)?)\b/gi;
 
     cancion.lines.forEach(l => {
         let chordLine = (l.chordLine || "").replace(regex, acorde =>
