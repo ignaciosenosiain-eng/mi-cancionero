@@ -1,6 +1,11 @@
 {
-  "title"      : "ALABA AL SEÑOR",
-  "lines"      : [
+  "title": "ALABA AL SEÑOR",
+  "category": "Entrada",
+  "ritmo": "4/4",
+  "cejilla": 0,
+  "originalKey": "DO",
+
+  "lines": [
     {
       "chordLine" : "DO              lam",
       "lyrics"    : "Alaba al Señor alma mía,"
