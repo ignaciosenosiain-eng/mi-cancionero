@@ -11,8 +11,6 @@ function getFileFromQuery() {
 // ===============================
 function inferirTonalidad(cancion) {
     const lineas = cancion.lines || [];
-
-    // Detecta acordes tipo DO, RE, MI, FA#, SOLm, etc.
     const regexAcorde = /\b([A-G][#b]?)(m?)\b/i;
 
     for (const linea of lineas) {
@@ -21,27 +19,44 @@ function inferirTonalidad(cancion) {
         const match = linea.chordLine.match(regexAcorde);
         if (!match) continue;
 
-        let nota = match[1].toUpperCase(); // DO, RE, MI...
+        let nota = match[1].toUpperCase();
         let menor = match[2] === 'm';
 
-        // Relativas menores → mayores
         const relativas = {
-            "A": "C",   // lam → DO
-            "D": "F",   // rem → FA
-            "E": "G",   // mim → SOL
-            "B": "D",   // sim → RE
-            "F#": "A",  // fa#m → LA
-            "C#": "E"   // do#m → MI
+            "A": "C",
+            "D": "F",
+            "E": "G",
+            "B": "D",
+            "F#": "A",
+            "C#": "E"
         };
 
-        if (menor) {
-            return relativas[nota] || nota;
-        }
-
+        if (menor) return relativas[nota] || nota;
         return nota;
     }
 
-    return ""; // si no hay acordes
+    return "";
+}
+
+// ===============================
+// TABLA DE NOTAS PARA TRANSPOSICIÓN
+// ===============================
+const notas = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+
+function transponerAcorde(acorde, semitonos) {
+    const match = acorde.match(/^([A-G][#b]?)(m?)$/);
+    if (!match) return acorde;
+
+    let [_, nota, menor] = match;
+
+    const bemoles = { "Db": "C#", "Eb": "D#", "Gb": "F#", "Ab": "G#", "Bb": "A#" };
+    if (bemoles[nota]) nota = bemoles[nota];
+
+    let idx = notas.indexOf(nota);
+    if (idx === -1) return acorde;
+
+    let nuevoIdx = (idx + semitonos + 12) % 12;
+    return notas[nuevoIdx] + menor;
 }
 
 // ===============================
@@ -52,7 +67,6 @@ function mostrarDatos(cancion) {
     const ritmo = cancion.ritmo || "—";
     const cejilla = (cancion.cejilla ?? 0);
 
-    // Si no hay tonalidad en JSON → inferirla
     const original = cancion.originalKey || inferirTonalidad(cancion) || "—";
 
     document.getElementById('tituloCancion').textContent = cancion.title || '';
@@ -75,6 +89,27 @@ function mostrarContenido(cancion) {
     lineas.forEach(linea => {
         if (linea.chordLine) salida += linea.chordLine + '\n';
         salida += (linea.lyrics || '') + '\n\n';
+    });
+
+    contenedor.textContent = salida;
+}
+
+// ===============================
+// TRANSPONER TODA LA CANCIÓN
+// ===============================
+function transponerCancion(cancion, semitonos) {
+    const contenedor = document.getElementById('contenidoCancion');
+    let salida = '';
+
+    const regexAcorde = /\b([A-G][#b]?m?)\b/g;
+
+    cancion.lines.forEach(linea => {
+        let chordLine = linea.chordLine || "";
+        chordLine = chordLine.replace(regexAcorde, acorde => transponerAcorde(acorde, semitonos));
+
+        let lyrics = linea.lyrics || "";
+
+        salida += chordLine + "\n" + lyrics + "\n\n";
     });
 
     contenedor.textContent = salida;
@@ -120,6 +155,7 @@ function configurarTransposicion(cancion) {
 
     function actualizar() {
         spanActual.textContent = calcularTono();
+        transponerCancion(cancion, semitonos);
     }
 
     document.getElementById('btnMenos').addEventListener('click', () => {
