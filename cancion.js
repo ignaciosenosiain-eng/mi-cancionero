@@ -7,56 +7,89 @@ function getFileFromQuery() {
 }
 
 // ===============================
+// MAPAS DE NOTAS (ES ↔ EN)
+// ===============================
+const notasES = ["DO","DO#","RE","RE#","MI","FA","FA#","SOL","SOL#","LA","LA#","SI"];
+const notasEN = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
+
+const mapaEStoEN = {
+    "DO":"C","DO#":"C#","RE":"D","RE#":"D#","MI":"E","FA":"F","FA#":"F#",
+    "SOL":"G","SOL#":"G#","LA":"A","LA#":"A#","SI":"B",
+    "lam":"Am","rem":"Dm","mim":"Em","fam":"Fm","solm":"Gm","lam":"Am","sim":"Bm"
+};
+
+const mapaENtoES = {
+    "C":"DO","C#":"DO#","D":"RE","D#":"RE#","E":"MI","F":"FA","F#":"FA#",
+    "G":"SOL","G#":"SOL#","A":"LA","A#":"LA#","B":"SI",
+    "Am":"lam","Dm":"rem","Em":"mim","Fm":"fam","Gm":"solm","Bm":"sim"
+};
+
+// ===============================
 // INFERIR TONALIDAD A PARTIR DE ACORDES
 // ===============================
 function inferirTonalidad(cancion) {
     const lineas = cancion.lines || [];
-    const regexAcorde = /\b([A-G][#b]?)(m?)\b/i;
+    const regex = /\b(DO#|DO|RE#|RE|MI|FA#|FA|SOL#|SOL|LA#|LA|SI)(m?)\b/i;
 
     for (const linea of lineas) {
         if (!linea.chordLine) continue;
+        const m = linea.chordLine.toUpperCase().match(regex);
+        if (!m) continue;
 
-        const match = linea.chordLine.match(regexAcorde);
-        if (!match) continue;
+        let nota = m[1].toUpperCase();
+        let menor = m[2] === "m";
 
-        let nota = match[1].toUpperCase();
-        let menor = match[2] === 'm';
+        if (menor) {
+            const relativas = {
+                "LA":"DO","RE":"FA","MI":"SOL","SI":"RE","FA#":"LA","DO#":"MI"
+            };
+            return relativas[nota] || nota;
+        }
 
-        const relativas = {
-            "A": "C",
-            "D": "F",
-            "E": "G",
-            "B": "D",
-            "F#": "A",
-            "C#": "E"
-        };
-
-        if (menor) return relativas[nota] || nota;
         return nota;
     }
-
     return "";
 }
 
 // ===============================
-// TABLA DE NOTAS PARA TRANSPOSICIÓN
+// CONVERTIR ACORDE ES → EN
 // ===============================
-const notas = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+function acordeEStoEN(acorde) {
+    const base = acorde.toUpperCase();
+    if (mapaEStoEN[base]) return mapaEStoEN[base];
+    return acorde;
+}
 
-function transponerAcorde(acorde, semitonos) {
-    const match = acorde.match(/^([A-G][#b]?)(m?)$/);
+// ===============================
+// CONVERTIR ACORDE EN → ES
+// ===============================
+function acordeENtoES(acorde) {
+    if (mapaENtoES[acorde]) return mapaENtoES[acorde];
+    return acorde;
+}
+
+// ===============================
+// TRANSPONER ACORDE (EN)
+// ===============================
+function transponerAcordeEN(acorde, semitonos) {
+    const match = acorde.match(/^([A-G][#]?)(m?)$/);
     if (!match) return acorde;
 
     let [_, nota, menor] = match;
-
-    const bemoles = { "Db": "C#", "Eb": "D#", "Gb": "F#", "Ab": "G#", "Bb": "A#" };
-    if (bemoles[nota]) nota = bemoles[nota];
-
-    let idx = notas.indexOf(nota);
+    let idx = notasEN.indexOf(nota);
     if (idx === -1) return acorde;
 
     let nuevoIdx = (idx + semitonos + 12) % 12;
-    return notas[nuevoIdx] + menor;
+    return notasEN[nuevoIdx] + (menor ? "m" : "");
+}
+
+// ===============================
+// TRANSPONER ACORDE (ES → EN → ES)
+// ===============================
+function transponerAcordeES(acorde, semitonos) {
+    const en = acordeEStoEN(acorde);
+    const transEN = transponerAcordeEN(en, semitonos);
+    return acordeENtoES(transEN);
 }
 
 // ===============================
@@ -66,7 +99,6 @@ function mostrarDatos(cancion) {
     const categoria = cancion.category || "—";
     const ritmo = cancion.ritmo || "—";
     const cejilla = (cancion.cejilla ?? 0);
-
     const original = cancion.originalKey || inferirTonalidad(cancion) || "—";
 
     document.getElementById('tituloCancion').textContent = cancion.title || '';
@@ -78,17 +110,15 @@ function mostrarDatos(cancion) {
 }
 
 // ===============================
-// MOSTRAR CONTENIDO (ACORDES + LETRA)
+// MOSTRAR CONTENIDO ORIGINAL
 // ===============================
 function mostrarContenido(cancion) {
     const contenedor = document.getElementById('contenidoCancion');
-    let salida = '';
+    let salida = "";
 
-    const lineas = cancion.lines || [];
-
-    lineas.forEach(linea => {
-        if (linea.chordLine) salida += linea.chordLine + '\n';
-        salida += (linea.lyrics || '') + '\n\n';
+    cancion.lines.forEach(l => {
+        if (l.chordLine) salida += l.chordLine + "\n";
+        salida += (l.lyrics || "") + "\n\n";
     });
 
     contenedor.textContent = salida;
@@ -99,17 +129,16 @@ function mostrarContenido(cancion) {
 // ===============================
 function transponerCancion(cancion, semitonos) {
     const contenedor = document.getElementById('contenidoCancion');
-    let salida = '';
+    let salida = "";
 
-    const regexAcorde = /\b([A-G][#b]?m?)\b/g;
+    const regex = /\b(DO#|DO|RE#|RE|MI|FA#|FA|SOL#|SOL|LA#|LA|SI|lam|rem|mim|fam|solm|sim)\b/gi;
 
-    cancion.lines.forEach(linea => {
-        let chordLine = linea.chordLine || "";
-        chordLine = chordLine.replace(regexAcorde, acorde => transponerAcorde(acorde, semitonos));
+    cancion.lines.forEach(l => {
+        let chordLine = (l.chordLine || "").replace(regex, acorde =>
+            transponerAcordeES(acorde, semitonos)
+        );
 
-        let lyrics = linea.lyrics || "";
-
-        salida += chordLine + "\n" + lyrics + "\n\n";
+        salida += chordLine + "\n" + (l.lyrics || "") + "\n\n";
     });
 
     contenedor.textContent = salida;
@@ -125,10 +154,9 @@ function configurarListaDia(file, cancion) {
         const clave = 'listaDia';
         const actual = JSON.parse(localStorage.getItem(clave) || '[]');
 
-        const yaEsta = actual.some(item => item.file === file);
-        if (!yaEsta) {
+        if (!actual.some(x => x.file === file)) {
             actual.push({
-                file: file,
+                file,
                 title: cancion.title || '',
                 category: cancion.category || ''
             });
@@ -150,7 +178,7 @@ function configurarTransposicion(cancion) {
 
     function calcularTono() {
         if (semitonos === 0) return original;
-        return `${original} (${semitonos > 0 ? '+' : ''}${semitonos})`;
+        return `${original} (${semitonos > 0 ? "+" : ""}${semitonos})`;
     }
 
     function actualizar() {
@@ -177,11 +205,11 @@ function configurarTransposicion(cancion) {
 (function iniciar() {
     const file = getFileFromQuery();
     if (!file) {
-        alert('Falta parámetro ?file=');
+        alert("Falta parámetro ?file=");
         return;
     }
 
-    fetch('./canciones/' + file)
+    fetch("./canciones/" + file)
         .then(r => r.json())
         .then(cancion => {
             mostrarDatos(cancion);
@@ -191,6 +219,6 @@ function configurarTransposicion(cancion) {
         })
         .catch(err => {
             console.error(err);
-            alert('No se pudo cargar la canción');
+            alert("No se pudo cargar la canción");
         });
 })();
