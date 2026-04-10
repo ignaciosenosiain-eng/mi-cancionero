@@ -24,8 +24,21 @@ const mapaENtoES = {
     "C":"DO","C#":"DO#","D":"RE","D#":"RE#","E":"MI","F":"FA","F#":"FA#",
     "G":"SOL","G#":"SOL#","A":"LA","A#":"LA#","B":"SI",
 
-    "Am":"lam","Dm":"rem","Em":"mim","Fm":"fam","Gm":"solm","Bm":"sim",
-    "F#m":"fa#m","C#m":"do#m","G#m":"sol#m","A#m":"la#m","D#m":"re#m"
+    // menores naturales
+    "Am":"lam",
+    "Bm":"sim",
+    "Cm":"dom",
+    "Dm":"rem",
+    "Em":"mim",
+    "Fm":"fam",
+    "Gm":"solm",
+
+    // menores con sostenido
+    "C#m":"do#m",
+    "D#m":"re#m",
+    "F#m":"fa#m",
+    "G#m":"sol#m",
+    "A#m":"la#m"
 };
 
 // ===============================
@@ -69,8 +82,7 @@ function acordeEStoEN(acorde) {
 // CONVERTIR ACORDE EN → ES
 // ===============================
 function acordeENtoES(acorde) {
-    // Normalizar m/M
-    acorde = acorde.replace("M", "m");
+    acorde = acorde.replace("M", "m"); // normalizar
 
     if (mapaENtoES[acorde]) return mapaENtoES[acorde];
     return acorde;
