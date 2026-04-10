@@ -147,6 +147,19 @@ function mostrarContenido(cancion) {
 }
 
 // ===============================
+// CALCULAR TONALIDAD REAL
+// ===============================
+function calcularTonalidadReal(original, semitonos) {
+    const originalEN = mapaEStoEN[original] || original;
+    const idx = notasEN.indexOf(originalEN);
+    if (idx === -1) return original;
+
+    const nuevoIdx = (idx + semitonos + 12) % 12;
+    const nuevaEN = notasEN[nuevoIdx];
+    return mapaENtoES[nuevaEN] || nuevaEN;
+}
+
+// ===============================
 // TRANSPONER CANCIÓN
 // ===============================
 function transponerCancion(cancion, semitonos) {
@@ -198,13 +211,9 @@ function configurarTransposicion(cancion) {
 
     let semitonos = 0;
 
-    function calcularTono() {
-        if (semitonos === 0) return original;
-        return `${original} (${semitonos > 0 ? "+" : ""}${semitonos})`;
-    }
-
     function actualizar() {
-        spanActual.textContent = calcularTono();
+        const tonoReal = calcularTonalidadReal(original, semitonos);
+        spanActual.textContent = tonoReal;
         transponerCancion(cancion, semitonos);
     }
 
