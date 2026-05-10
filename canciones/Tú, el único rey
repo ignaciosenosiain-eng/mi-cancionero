@@ -1,0 +1,105 @@
+{
+  "title": "TÚ, EL ÚNICO REY",
+  "category": "Comunión",
+  "ritmo": "4/4",
+  "cejilla": 5,
+  "originalKey": "SOL",
+
+  "lines": [
+    {
+      "chordLine": "G    G",
+      "lyrics": ""
+    },
+    {
+      "chordLine": "G    Em",
+      "lyrics": "Tú, el Único Rey"
+    },
+    {
+      "chordLine": "C",
+      "lyrics": "que tiene que reinar,"
+    },
+    {
+      "chordLine": "D    G",
+      "lyrics": "el Único Señor al que voy a alabar."
+    },
+    {
+      "chordLine": "Em",
+      "lyrics": "Hoy levanto el corazón"
+    },
+    {
+      "chordLine": "C",
+      "lyrics": "al que lo conquistó,"
+    },
+    {
+      "chordLine": "Dsus4   D",
+      "lyrics": "simplemente porque Tú eres Dios."
+    },
+
+    {
+      "chordLine": "G",
+      "lyrics": "Quiero ponerte"
+    },
+    {
+      "chordLine": "C",
+      "lyrics": "por encima de todo."
+    },
+    {
+      "chordLine": "Em",
+      "lyrics": "En cada momento"
+    },
+    {
+      "chordLine": "D",
+      "lyrics": "sentarte en el trono."
+    },
+    {
+      "chordLine": "C",
+      "lyrics": "Que tu alabanza"
+    },
+    {
+      "chordLine": "Em",
+      "lyrics": "esté siempre en mi boca"
+    },
+    {
+      "chordLine": "C    D",
+      "lyrics": "y reconocer"
+    },
+    {
+      "chordLine": "Em   G",
+      "lyrics": "que Tú eres Dios."
+    },
+
+    {
+      "chordLine": "C    D",
+      "lyrics": "Que alabarte a Ti, Señor,"
+    },
+    {
+      "chordLine": "Em   G",
+      "lyrics": "sea siempre lo primero."
+    },
+    {
+      "chordLine": "C    D",
+      "lyrics": "Fijo mi mirada en el Cielo."
+    },
+
+    {
+      "chordLine": "G",
+      "lyrics": "Tú, el Único Rey"
+    },
+    {
+      "chordLine": "D    Bm",
+      "lyrics": "que tiene que reinar,"
+    },
+    {
+      "chordLine": "Em",
+      "lyrics": "el Único Señor al que voy a alabar."
+    },
+    {
+      "chordLine": "C",
+      "lyrics": "Hoy levanto el corazón"
+    },
+    {
+      "chordLine": "Dsus4   D   C",
+      "lyrics": "simplemente porque Tú eres Dios."
+    }
+  ]
+}
